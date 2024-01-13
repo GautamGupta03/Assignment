@@ -1,0 +1,68 @@
+Task 1:
+
+=> User Table
+
+CREATE TABLE user (
+    UserId INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Email VARCHAR(255) UNIQUE,
+    Password VARCHAR(255),
+    ContactNumber VARCHAR(20),
+    Address TEXT(100)
+);
+
+=> Courier Table
+
+CREATE TABLE courier (
+    CourierId INT PRIMARY KEY,
+    SenderName VARCHAR(255),
+    SenderAddress TEXT,
+    ReceiverName VARCHAR(255),
+    ReceiverAddress TEXT,
+    Weight DECIMAL(5, 2),
+    Status VARCHAR(50),
+    TrackingNumber VARCHAR(20) UNIQUE,
+    DeliveryDate DATE
+);
+
+=> Employee Table
+
+CREATE TABLE employee (
+    EmployeeId INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Email VARCHAR(255) UNIQUE,
+    ContactNumber VARCHAR(20),
+    Role VARCHAR(50),
+    Salary DECIMAL(10, 2)
+);
+
+=> Location Table
+
+CREATE TABLE location (
+    LocationID INT PRIMARY KEY,
+    LocationName VARCHAR(100),
+    Address TEXT
+);
+
+=>Courier Service Table
+
+CREATE TABLE courierservice (
+    ServiceId INT PRIMARY KEY,
+    ServiceName VARCHAR(100),
+    Cost DECIMAL(8, 2)
+);
+
+=> Payment Table
+
+CREATE TABLE payments (
+    PaymentId INT PRIMARY KEY,
+    CourierId INT,
+    LocationId INT,
+    Amount DECIMAL(10, 2),
+    PaymentDate DATE,
+    FOREIGN KEY (CourierId) REFERENCES courier(CourierId),
+    FOREIGN KEY (LocationId) REFERENCES location(LocationId)
+);
+
+
+

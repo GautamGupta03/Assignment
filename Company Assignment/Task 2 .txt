@@ -1,0 +1,54 @@
+Task 2: 
+
+1. List all customers: 
+   
+   select * from user;
+
+2. List all orders for a specific customer:  
+  
+   select * from orders where UserID='2'
+
+3. List all couriers:  
+ 
+   select * from courier;
+
+4. List all packages for a specific order:  
+
+   select * from parcels where OrderID=2
+   
+5. List all deliveries for a specific courier:
+
+  Select * from Orders where CourierID = 4;
+
+6. List all undelivered packages:  
+
+   select * from Parcels where ParcelStatus <> 'Delivered';
+
+7. List all packages that are scheduled for delivery today:  
+
+   select * from orders where DeliveryDate = '2024-01-10';
+
+8. List all packages with a specific status:
+
+   select * from Parcels where ParcelStatus = 'In transit';
+
+9. Calculate the total number of packages for each courier.  
+
+   select CourierID, COUNT(*) AS TotalPackages from Parcels group by CourierID;
+
+**10. Find the average delivery time for each courier  
+
+        select CourierID, AVG(DATEDIFF(DeliveryDate, OrderDate)) AS AvgDeliveryTime from Orders             	GROUP BY CourierID;
+
+
+11. List all packages with a specific weight range:
+
+    select * from Parcels where ParcelWeight between 2 AND 4;
+
+12.  Retrieve employees whose names contain 'John'  
+
+     select * from Employee where Name like '%John%';
+
+**13. Retrieve all courier records with payments greater than $50.
+
+    select c.*, p.Amount from Courier c INNER JOIN Payment p on c.CourierID = p.CourierID where           	p.Amount > 50;
